@@ -20,7 +20,7 @@ export class InventoryLocationService {
     async pushInventoryLocation(inventoryLocationUpdate: InventoryLocationUpdate): Promise<any> {
 
         const responseData = await lastValueFrom(
-            this.httpService.post(mvBackendUrl, inventoryLocationUpdate, null).pipe(
+            this.httpService.post(mvBackendUrl + '/InventoryLocation/InventoryLocationUpdate', inventoryLocationUpdate, null).pipe(
                 map((response) => {
                     return response.data;
                 }),

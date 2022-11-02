@@ -7,19 +7,20 @@ import { lastValueFrom, map } from "rxjs";
 @Injectable()
 export class SalesOrderService {
     constructor(private readonly httpService: HttpService) { }
-    createUpdate(newProd: mvSalesOrder): SalesOrderUpdate {
+    createUpdate(newSalesOrder: mvSalesOrder): SalesOrderUpdate {
         const retProd: SalesOrderUpdate = {
             APIKEY: MYAPIKEY,
-            mvSalesOrder: newProd,
-            mvRecordAction: (newProd.SalesOrderID === undefined ? 'Insert' : 'Update'),
+            mvSalesOrder: newSalesOrder,
+            mvRecordAction: 'Insert',
         }
         return retProd;
     }
 
     async pushSalesOrder(SalesOrderUpdate: SalesOrderUpdate): Promise<any> {
 
+        console.log(SalesOrderUpdate)
         const responseData = await lastValueFrom(
-            this.httpService.post(mvBackendUrl, SalesOrderUpdate, null).pipe(
+            this.httpService.post(mvBackendUrl + '/SalesOrder/SalesOrderUpdate', SalesOrderUpdate, null).pipe(
                 map((response) => {
                     return response.data;
                 }),

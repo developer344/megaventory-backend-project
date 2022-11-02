@@ -19,7 +19,7 @@ export class ProductService {
     async pushProduct(productUpdate: ProductUpdate): Promise<any> {
 
         const responseData = await lastValueFrom(
-            this.httpService.post(mvBackendUrl, productUpdate, null).pipe(
+            this.httpService.post(mvBackendUrl + '/Product/ProductUpdate', productUpdate, null).pipe(
                 map((response) => {
                     return response.data;
                 }),

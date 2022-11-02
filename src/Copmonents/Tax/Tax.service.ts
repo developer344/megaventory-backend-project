@@ -11,7 +11,7 @@ export class TaxService {
         const retProd: TaxUpdate = {
             APIKEY: MYAPIKEY,
             mvTax: newTax,
-            mvRecordAction: (newProd.TaxID === undefined ? 'Insert' : 'Update'),
+            mvRecordAction: (newTax.TaxID === undefined ? 'Insert' : 'Update'),
         }
         return retProd;
     }
@@ -19,7 +19,7 @@ export class TaxService {
     async pushTax(TaxUpdate: TaxUpdate): Promise<any> {
 
         const responseData = await lastValueFrom(
-            this.httpService.post(mvBackendUrl, TaxUpdate, null).pipe(
+            this.httpService.post(mvBackendUrl + '/Tax/TaxUpdate', TaxUpdate, null).pipe(
                 map((response) => {
                     return response.data;
                 }),

@@ -21,30 +21,119 @@ export interface InventoryLocationUpdate {
     mvInsertUpdateDeleteSourceApplication?: string;
 }
 
-export interface  TaxUpdate {
+export interface TaxUpdate {
     APIKEY: string;
-    mvTax :mvTax;
-    mvRecordAction :string;
+    mvTax: mvTax;
+    mvRecordAction: string;
     mvInsertUpdateDeleteSourceApplication?: string;
-    }
+}
+export interface DiscountUpdate {
+    APIKEY: string;
+    mvDiscount: mvDiscount;
+    mvRecordAction: string;
+    mvInsertUpdateDeleteSourceApplication?: string;
+}
 
-export interface     mvTax {
-    TaxID?:number;
-    TaxName :string;
+export interface SalesOrderUpdate {
+    APIKEY: string;
+    mvSalesOrder: mvSalesOrder;
+    mvRecordAction: string;
+    mvInsertUpdateDeleteSourceApplication?: string;
+    AutoInsertBundledProductRows?: boolean;
+}
+export interface mvSalesOrder {
+    SalesOrderId?: number;
+    SalesOrderTypeId: number;
+    SalesOrderTypeAbbreviation?: string;
+    SalesOrderTypeDescription?: string;
+    SalesOrderNo?: string;
+    SalesOrderReferenceNo?: string;
+    SalesOrderReferenceApplication?: string;
+    SalesOrderDate?: Date;
+    SalesOrderCustomOrderDate1?: Date;
+    SalesOrderCustomOrderDate2?: Date;
+    SalesOrderCurrencyCode?: string;
+    SalesOrderClientID: number;
+    SalesOrderClientName?: string;
+    SalesOrderBillingAddress?: string;
+    SalesOrderShippingAddress?: string;
+    SalesOrderAddresses?: mvAddress[];
+    SalesOrderContactPerson?: string;
+    SalesOrderInventoryLocationID?: number;
+    SalesOrderCustomFlag1?: boolean;
+    SalesOrderCustomFlag2?: boolean;
+    SalesOrderCustomFlag3?: boolean;
+    SalesOrderCustomFlag4?: boolean;
+    SalesOrderCustomFlag5?: boolean;
+    SalesOrderCustomFlag6?: boolean;
+    SalesOrderCustomFlag7?: boolean;
+    SalesOrderCustomFlag8?: boolean;
+    SalesOrderCustomFlag9?: boolean;
+    SalesOrderCustomFlag10?: boolean;
+    SalesOrderComments?: string;
+    SalesOrderTags?: string;
+    SalesOrderPaymentTermsEnumeration?: string
+    SalesOrderPaymentMethod?: string
+    SalesOrderTotalQuantity?: number;
+    SalesOrderAmountSubtotalWithoutTaxAndDiscount?: number;
+    SalesOrderAmountShipping?: number;
+    SalesOrderAmountTotalDiscount?: number;
+    SalesOrderAmountTotalTax?: number;
+    SalesOrderAmountGrandTotal?: number;
+    SalesOrderDetails: mvSalesOrderRow[];
+    SalesOrderShipDocumentTypeID?: string;
+    SalesOrderStatus?: string;
+    chkReOpenOrCloseRelatedDocs?: boolean;
+    SalesOrderCreationDate?: Date;
+    SalesOrderLastUpdatedDate?: Date;
+}
+
+export interface mvSalesOrderRow {
+    SalesOrderRowDetailID?: number;
+    SalesOrderRowProductID?: number;
+    SalesOrderRowProductSKU: string;
+    SalesOrderRowProductDescription?: string;
+    SalesOrderRowQuantity: number;
+    SalesOrderRowShippedQuantity: number;
+    SalesOrderRowInvoicedQuantity: number;
+    SalesOrderRowUnitPriceWithoutTaxOrDiscount: number;
+    SalesOrderRowTaxID?: number;
+    SalesOrderTotalTaxAmount?: number;
+    SalesOrderRowDiscountID?: number;
+    SalesOrderRowTotalDiscountAmount?: number;
+    SalesOrderRowTotalAmount?: number;
+    SalesOrderRowSerialNumbers?: string[];
+    SalesOrderRowBatchNumbers?: BatchNumberDetails[];
+    SalesOrderRowRemarks?: string;
+}
+export interface BatchNumberDetails {
+    BatchNumberName: string;
+    ExpiryDate?: Date;
+    AssignedQTYInDetail: number;
+}
+export interface mvDiscount {
+    DiscountID?: number;
+    DiscountName: string;
+    DiscountDescription?: string;
+    DiscountValue: number;
+}
+export interface mvTax {
+    TaxID?: number;
+    TaxName: string;
     TaxDescription?: string;
-    TaxValue :double;
-    } 
+    TaxValue: number;
+}
 
 export interface mvInventoryLocation {
-    InventoryLocationID?: number,
-    InventoryLocationName: string,
-    InventoryLocationAbbreviation: string,
-    InventoryLocationAddress?: string,
-    Address?: mvAddress,
-    InventoryLocationCurrencyCode?: string,
-    InventoryLocationCompanyId?: number,
-    InventoryLocationIsDeleted?: boolean,
-    InventoryLocationIsTransit?: boolean
+    InventoryLocationID?: number;
+    InventoryLocationName: string;
+    InventoryLocationAbbreviation: string;
+    InventoryLocationAddress?: string;
+    Address?: mvAddress;
+    InventoryLocationCurrencyCode?: string;
+    InventoryLocationCompanyId?: number;
+    InventoryLocationIsDeleted?: boolean;
+    InventoryLocationIsTransit?: boolean;
 }
 
 export interface mvProduct {

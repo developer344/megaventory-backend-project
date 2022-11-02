@@ -3,7 +3,7 @@ import { InventoryLocationUpdate, mvInventoryLocation, mvSupplierClient, Supplie
 import { InventoryLocationService } from './InventoryLocation.service';
 
 @Controller('InventoryLocation')
-export class ProductController {
+export class InventoryLocationController {
     constructor(private readonly inventoryLocationService: InventoryLocationService) { }
 
     @Post('InventoryLocationUpdate')

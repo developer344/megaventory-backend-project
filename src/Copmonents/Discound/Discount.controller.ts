@@ -6,7 +6,7 @@ import { DiscountService } from './Discount.service';
 export class DiscountController {
     constructor(private readonly DiscountService: DiscountService) { }
 
-    @Post('UpdateDiscount')
+    @Post('DiscountUpdate')
     async UpdateDiscount(@Body() Discount: mvDiscount): Promise<any> {
         const UpDiscount: DiscountUpdate = this.DiscountService.createUpdate(Discount);
         return await this.DiscountService.pushDiscount(UpDiscount);

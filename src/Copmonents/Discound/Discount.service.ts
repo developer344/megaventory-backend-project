@@ -7,11 +7,11 @@ import { lastValueFrom, map } from "rxjs";
 @Injectable()
 export class DiscountService {
     constructor(private readonly httpService: HttpService) { }
-    createUpdate(newProd: mvDiscount): DiscountUpdate {
+    createUpdate(newDiscount: mvDiscount): DiscountUpdate {
         const retProd: DiscountUpdate = {
             APIKEY: MYAPIKEY,
-            mvDiscount: newProd,
-            mvRecordAction: (newProd.DiscountID === undefined ? 'Insert' : 'Update'),
+            mvDiscount: newDiscount,
+            mvRecordAction: (newDiscount.DiscountID === undefined ? 'Insert' : 'Update'),
         }
         return retProd;
     }
@@ -19,7 +19,7 @@ export class DiscountService {
     async pushDiscount(DiscountUpdate: DiscountUpdate): Promise<any> {
 
         const responseData = await lastValueFrom(
-            this.httpService.post(mvBackendUrl, DiscountUpdate, null).pipe(
+            this.httpService.post(mvBackendUrl + '/Discount/DiscountUpdate', DiscountUpdate, null).pipe(
                 map((response) => {
                     return response.data;
                 }),

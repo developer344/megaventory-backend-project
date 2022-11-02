@@ -6,7 +6,7 @@ import { TaxService } from './Tax.service';
 export class TaxController {
     constructor(private readonly TaxService: TaxService) { }
 
-    @Post('UpdateTax')
+    @Post('TaxUpdate')
     async UpdateTax(@Body() Tax: mvTax): Promise<any> {
         const UpTax: TaxUpdate = this.TaxService.createUpdate(Tax);
         return await this.TaxService.pushTax(UpTax);

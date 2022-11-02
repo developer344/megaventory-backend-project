@@ -1,9 +1,9 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { mvProduct, mvSupplierClient, ProductUpdate, SupplierClientUpdate } from 'src/dto/Interfaces';
+import { mvSupplierClient, SupplierClientUpdate } from 'src/dto/Interfaces';
 import { SupplierClientService } from './SupplierClient.service';
 
 @Controller('SupplierClient')
-export class ProductController {
+export class SupplierClientController {
     constructor(private readonly supplierClientService: SupplierClientService) { }
 
     @Post('SupplierClientUpdate')

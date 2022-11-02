@@ -6,9 +6,11 @@ import { ProductService } from './Product.service';
 export class ProductController {
     constructor(private readonly productService: ProductService) { }
 
-    @Post('UpdateProduct')
+    @Post('ProductUpdate')
     async UpdateProduct(@Body() product: mvProduct): Promise<any> {
         const UpProduct: ProductUpdate = this.productService.createUpdate(product);
-        return await this.productService.pushProduct(UpProduct);
+        const response = await this.productService.pushProduct(UpProduct);
+        console.log(response);
+        return response;
     }
 }

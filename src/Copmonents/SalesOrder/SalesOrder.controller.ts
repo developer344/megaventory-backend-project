@@ -6,7 +6,7 @@ import { SalesOrderService } from './SalesOrder.service';
 export class SalesOrderController {
     constructor(private readonly SalesOrderService: SalesOrderService) { }
 
-    @Post('UpdateSalesOrder')
+    @Post('SalesOrderUpdate')
     async UpdateSalesOrder(@Body() SalesOrder: mvSalesOrder): Promise<any> {
         const UpSalesOrder: SalesOrderUpdate = this.SalesOrderService.createUpdate(SalesOrder);
         return await this.SalesOrderService.pushSalesOrder(UpSalesOrder);

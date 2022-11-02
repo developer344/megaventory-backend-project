@@ -8,19 +8,19 @@ import { lastValueFrom, map } from "rxjs";
 export class SupplierClientService {
     constructor(private readonly httpService: HttpService) { }
 
-    createUpdate(suppierClient: mvSupplierClient): SupplierClientUpdate {
-        const retProd: SupplierClientUpdate = {
+    createUpdate(supplierClient: mvSupplierClient): SupplierClientUpdate {
+        const retSupplierClient: SupplierClientUpdate = {
             APIKEY: MYAPIKEY,
-            mvSupplierClient: suppierClient,
-            mvRecordAction: (suppierClient.SupplierClientID === undefined ? 'Insert' : 'Update'),
+            mvSupplierClient: supplierClient,
+            mvRecordAction: (supplierClient.SupplierClientID === undefined ? 'Insert' : 'Update'),
         }
-        return retProd;
+        return retSupplierClient;
     }
 
     async pushSupplierClient(supplierClientUpdate: SupplierClientUpdate): Promise<any> {
 
         const responseData = await lastValueFrom(
-            this.httpService.post(mvBackendUrl, supplierClientUpdate, null).pipe(
+            this.httpService.post(mvBackendUrl + '/SupplierClient/SupplierClientUpdate', supplierClientUpdate, null).pipe(
                 map((response) => {
                     return response.data;
                 }),
